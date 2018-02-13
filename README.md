@@ -41,7 +41,7 @@ You can set which models to `"Version Control"` on the `config/cms-versions.php`
 
 Set which models you want to `version control` in the `config/cms-versions.php` 
 
-````
+```php
     'models' => [
         [
             'table'                => 'my_table',
@@ -113,5 +113,5 @@ Save your model by specifying the id of the saved `CMSVersion` object in the mod
 
 Version `status` can be any string you want but `"Published"` is reserved and is set to signify that the version is the currently used version. If you try to save version controlled fields to a model set to a version that's not `published` then those changes wont save on the model itself but will be put in the version records only. If a version with model data is set to `published` it's data will be updated to the respective models.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyMDA2MTc0OV19
+eyJoaXN0b3J5IjpbLTQzMzg4ODY5MV19
 -->
