@@ -57,6 +57,14 @@ Set which models you want to `version control` in the `config/cms-versions.php`
 Where `table`, `primary_key`, `classpath` is the table, primary key, and class path of the model you want to version control. `is_published_field` is the name of the field you want to version control inside that model, ex: `is_published`, `is_active`, etc. `is_published_value` is the value that needs to be set to consider the field as "published", `is_unpublished_value` is vice versa.
 
 In case you want to version control multiple fields in 1 model, just duplicate the model entries in the `models` array with the same `table`, `primary_key`, and `classpath`.
+
+## Migrating the Models
+
+To enable version control on the models, the user must `migrate` after configuration with the following command:
+
+````
+
+````
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDkwNjQ0NzBdfQ==
+eyJoaXN0b3J5IjpbNDIxNzQwNjcxXX0=
 -->
