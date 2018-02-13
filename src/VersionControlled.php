@@ -2,40 +2,47 @@
 
 namespace Ervinne\CMSVersion;
 
+use Ervinne\CMSVersion\Models\CMSVersion;
+use Ervinne\CMSVersion\Services\CMSVersionConfig;
 use Exception;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
-use Ervinne\CMSVersion\Services\CMSVersionConfig;
+use Illuminate\Support\Facades\Request;
 
 /**
  *
  * @author Ervinne Sodusta <ervinne.sodusta@nuworks.ph>
  */
-trait VersionControlled
-{
+trait VersionControlled {
 
-    public function scopePublishedVersion($query, $isPublishedField)
-    {
-        $config      = App::make(CMSVersionConfig::class);
+    public function scopePublishedVersion($query, $isPublishedField) {
+        $config = App::make(CMSVersionConfig::class);
         $modelConfig = $config->getModelConfigs($this->table);
-        $pivotTable  = $config->getPivotTable($this->table);
+        $pivotTable = $config->getPivotTable($this->table);
 
+        $fieldConfig = $this->getFieldConfig($modelConfig, $pivotTable, $isPublishedField);
+        
+        $query
+                ->select("{$this->table}.*")
+                ->where("{$pivotTable}.$isPublishedField", $fieldConfig['is_published_value'])
+                ->join($pivotTable, "{$this->table}.{$modelConfig['primary_key']}", '=', 'model_id')
+                ->join('cms_versions', "{$pivotTable}.version_id", '=', 'cms_versions.id');
+
+        if (Request::has('version_id') && $config->getVersionDetector() == 'request_auto') {
+            return $query->where('cms_versions.id', Request::get('version_id'));
+        } else {
+            return $query->where('cms_versions.status', 'Published');
+        }
+    }
+
+    protected function getFieldConfig($modelConfig, $pivotTable, $isPublishedField) {
         foreach ($modelConfig['fields'] as $field) {
             if ($field['is_published_field'] == $isPublishedField) {
-                $fieldConfig = $field;
-                break;
+                return $field;
             }
         }
 
-        if (!$fieldConfig) {
-            throw new Exception("{$isPublishedField} does not exist in {$pivotTable}");
-        }
-
-        return $query
-                        ->select("{$this->table}.*")
-                        ->where('cms_versions.status', 'Published')
-                        ->join($pivotTable, "{$this->table}.{$modelConfig['primary_key']}", '=', 'model_id')
-                        ->join('cms_versions', "{$pivotTable}.version_id", '=', 'cms_versions.id');
+        throw new Exception("{$isPublishedField} does not exist in {$pivotTable}");
     }
 
     /**
@@ -44,13 +51,12 @@ trait VersionControlled
      * @param  array  $options
      * @return bool
      */
-    public function saveWithVersion(array $options = [])
-    {
-        $config      = App::make(CMSVersionConfig::class);
+    public function saveWithVersion(array $options = []) {
+        $config = App::make(CMSVersionConfig::class);
         $modelConfig = $config->getModelConfigs($this->table);
-        $pivotTable  = $config->getPivotTable($this->table);
+        $pivotTable = $config->getPivotTable($this->table);
 
-        $version = Models\CMSVersion::find($this->version_id);
+        $version = CMSVersion::find($this->version_id);
 
         $this->validate($modelConfig);
 
@@ -71,14 +77,13 @@ trait VersionControlled
 
         //  prepare & save pivot data        
         $pivotData['version_id'] = $version->id;
-        $pivotData['model_id']   = $this->{$modelConfig['primary_key']};
+        $pivotData['model_id'] = $this->{$modelConfig['primary_key']};
 
         $this->unpublishRelatedRecords($modelConfig['fields'], $pivotTable, $pivotData);
         $this->savePivotData($pivotTable, $pivotData);
     }
 
-    protected function unpublishRelatedRecords($fields, $pivotTable, $pivotData)
-    {
+    protected function unpublishRelatedRecords($fields, $pivotTable, $pivotData) {
         foreach ($fields as $field) {
             if ($pivotData[$field['is_published_field']] == $field['is_published_value']) {
                 DB::table($pivotTable)
@@ -89,8 +94,7 @@ trait VersionControlled
         }
     }
 
-    protected function savePivotData($pivotTable, $pivotData)
-    {
+    protected function savePivotData($pivotTable, $pivotData) {
         $existingPivotQuery = DB::table($pivotTable)
                 ->whereVersionId($pivotData['version_id'])
                 ->whereModelId($pivotData['model_id']);
@@ -104,8 +108,7 @@ trait VersionControlled
         }
     }
 
-    protected function validate($modelConfig)
-    {
+    protected function validate($modelConfig) {
         if (count($modelConfig['fields']) < 1) {
             throw new Exception('Unable to save version controlled model. No fields configured.');
         }
