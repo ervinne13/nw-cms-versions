@@ -7,7 +7,7 @@ This package enables tagging in Laravel models called versions. Versions allow d
 Require the package in your composer.json and update your dependencies:
 
 ````
-$ composer require "ervinne/nw-cms-version:dev-develop"
+$ composer require "ervinne/nw-cms-version:v1.0.0"
 ````
 
 Then add the service provider in your `config/app.php` providers array:
@@ -113,5 +113,5 @@ Save your model by specifying the id of the saved `CMSVersion` object in the mod
 
 Version `status` can be any string you want but `"Published"` is reserved and is set to signify that the version is the currently used version. If you try to save version controlled fields to a model set to a version that's not `published` then those changes wont save on the model itself but will be put in the version records only. If a version with model data is set to `published` it's data will be updated to the respective models.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1OTg3NDk0MV19
+eyJoaXN0b3J5IjpbLTExOTA3Mzg3MDldfQ==
 -->
