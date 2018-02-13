@@ -63,8 +63,10 @@ In case you want to version control multiple fields in 1 model, just duplicate t
 To enable version control on the models, the user must `migrate` after configuration with the following command:
 
 ````
-
+$ php artisan make:cmsvmigration
 ````
+
+This will create a migration cal
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDIxNzQwNjcxXX0=
+eyJoaXN0b3J5IjpbLTIzNTE4NzUyOV19
 -->
