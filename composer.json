@@ -2,7 +2,7 @@
     "name": "ervinne/nw-cms-version",
     "description": "Enables Laravel model version controlled fields.",
     "keywords": ["laravel", "version"],
-    "license": "DBAD",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ervinne Sodusta",
