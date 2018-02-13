@@ -90,7 +90,13 @@ class BannerSet extends Model
 
 Before you save a model, you need to save a version to save it to first:
 
-
+````
+CMSVersion::insert([
+    'display_name' => 'Default',
+    'description' => 'Default Version',
+    'status' => 'Publis
+]);
+````
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NzU0NDI1XX0=
+eyJoaXN0b3J5IjpbLTY4MzI0MTc5NF19
 -->
