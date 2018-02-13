@@ -6,13 +6,13 @@
  * and open the template in the editor.
  */
 
-namespace JFC\Modules\CMSVersion\Providers;
+namespace Ervinne\CMSVersion\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use JFC\Modules\CMSVersion\Repositories\CMSVersionRepository;
-use JFC\Modules\CMSVersion\Repositories\Impl\CMSVersionRepositoryDefaultImpl;
-use JFC\Modules\CMSVersion\Services\CMSVersionConfig;
-use JFC\Modules\CMSVersion\Services\Impl\CMSVersionConfigLaravelImpl;
+use Ervinne\CMSVersion\Repositories\CMSVersionRepository;
+use Ervinne\CMSVersion\Repositories\Impl\CMSVersionRepositoryDefaultImpl;
+use Ervinne\CMSVersion\Services\CMSVersionConfig;
+use Ervinne\CMSVersion\Services\Impl\CMSVersionConfigLaravelImpl;
 use function config_path;
 use function public_path;
 

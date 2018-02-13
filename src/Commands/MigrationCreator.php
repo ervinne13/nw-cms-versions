@@ -1,11 +1,11 @@
 <?php
 
-namespace JFC\Modules\CMSVersion\Commands;
+namespace Ervinne\CMSVersion\Commands;
 
 use Exception;
 use Illuminate\Database\Migrations\MigrationCreator as BaseMigrationCreator;
 use Illuminate\Filesystem\Filesystem;
-use JFC\Modules\CMSVersion\Services\CMSVersionConfig;
+use Ervinne\CMSVersion\Services\CMSVersionConfig;
 
 /**
  * Description of MigrationCreator

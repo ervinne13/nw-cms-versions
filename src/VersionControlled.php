@@ -1,11 +1,11 @@
 <?php
 
-namespace JFC\Modules\CMSVersion;
+namespace Ervinne\CMSVersion;
 
 use Exception;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
-use JFC\Modules\CMSVersion\Services\CMSVersionConfig;
+use Ervinne\CMSVersion\Services\CMSVersionConfig;
 
 /**
  *

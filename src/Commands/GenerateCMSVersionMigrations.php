@@ -1,6 +1,6 @@
 <?php
 
-namespace JFC\Modules\CMSVersion\Commands;
+namespace Ervinne\CMSVersion\Commands;
 
 use Illuminate\Database\Console\Migrations\MigrateMakeCommand;
 use Illuminate\Support\Composer;

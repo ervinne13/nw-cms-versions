@@ -1,8 +1,8 @@
 <?php
 
-namespace JFC\Modules\CMSVersion\Repositories;
+namespace Ervinne\CMSVersion\Repositories;
 
-use JFC\Modules\CMSVersion\Models\CMSVersion;
+use Ervinne\CMSVersion\Models\CMSVersion;
 
 /**
  *

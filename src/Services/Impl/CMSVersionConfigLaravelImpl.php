@@ -1,8 +1,8 @@
 <?php
 
-namespace JFC\Modules\CMSVersion\Services\Impl;
+namespace Ervinne\CMSVersion\Services\Impl;
 
-use JFC\Modules\CMSVersion\Services\CMSVersionConfig;
+use Ervinne\CMSVersion\Services\CMSVersionConfig;
 use function config;
 
 /**

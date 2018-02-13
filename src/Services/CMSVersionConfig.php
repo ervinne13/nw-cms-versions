@@ -1,6 +1,6 @@
 <?php
 
-namespace JFC\Modules\CMSVersion\Services;
+namespace Ervinne\CMSVersion\Services;
 
 /**
  *

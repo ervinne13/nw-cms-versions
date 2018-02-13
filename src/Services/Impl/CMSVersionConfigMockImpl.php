@@ -1,9 +1,9 @@
 <?php
 
-namespace JFC\Modules\CMSVersion\Services\Impl;
+namespace Ervinne\CMSVersion\Services\Impl;
 
 use Exception;
-use JFC\Modules\CMSVersion\Services\CMSVersionConfig;
+use Ervinne\CMSVersion\Services\CMSVersionConfig;
 
 /**
  * An implementation of CMSVersionConfig where the configuration can be conveniently

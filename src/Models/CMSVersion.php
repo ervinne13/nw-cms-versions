@@ -1,6 +1,6 @@
 <?php
 
-namespace JFC\Modules\CMSVersion\Models;
+namespace Ervinne\CMSVersion\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

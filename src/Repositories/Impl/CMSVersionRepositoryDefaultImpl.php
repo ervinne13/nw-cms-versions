@@ -1,12 +1,12 @@
 <?php
 
-namespace JFC\Modules\CMSVersion\Repositories\Impl;
+namespace Ervinne\CMSVersion\Repositories\Impl;
 
 use Exception;
 use Illuminate\Support\Facades\DB;
-use JFC\Modules\CMSVersion\Models\CMSVersion;
-use JFC\Modules\CMSVersion\Repositories\CMSVersionRepository;
-use JFC\Modules\CMSVersion\Services\CMSVersionConfig;
+use Ervinne\CMSVersion\Models\CMSVersion;
+use Ervinne\CMSVersion\Repositories\CMSVersionRepository;
+use Ervinne\CMSVersion\Services\CMSVersionConfig;
 
 /**
  * Description of CMSVersionRepositoryDefaultImpl
