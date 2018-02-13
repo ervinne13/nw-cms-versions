@@ -91,11 +91,11 @@ Use the trait `VersionControlled` in your model to enable versioning functionali
 Before you save a model, you need to save a version to save it to first:
 
 ````
-CMSVersion::insert([
-    'display_name' => 'Default',
-    'description' => 'Default Version',
-    'status' => 'Published'
-]);
+    CMSVersion::insert([
+        'display_name' => 'Default',
+        'description' => 'Default Version',
+        'status' => 'Published'
+    ]);
 ````
 
 Save your model by specifying the id of the saved `CMSVersion` object in the model's `version_id` field then save using the method `saveWithVersion()`.
@@ -113,5 +113,5 @@ Save your model by specifying the id of the saved `CMSVersion` object in the mod
 
 Version `status` can be any string you want but `"Published"` is reserved and is set to signify that the version is the currently used version. If you try to save version controlled fields to a model set to a version that's not `published` then those changes wont save on the model itself but will be put in the version records only. If a version with model data is set to `published` it's data will be updated to the respective models.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNDczMzIwNV19
+eyJoaXN0b3J5IjpbLTUyMDUzMjY5XX0=
 -->
