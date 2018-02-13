@@ -57,7 +57,7 @@ Set which models you want to `version control` in the `config/cms-versions.php`
     ],
 ````
 
-Where `table`, `primary_key`, `classpath` is the table, primary key, and class path of the model you want to version control. `is_published_field` is the name of the field you want to version control inside that model, ex: `is_published`, `is_active`, etc. `is_published_value` is the 
+Where `table`, `primary_key`, `classpath` is the table, primary key, and class path of the model you want to version control. `is_published_field` is the name of the field you want to version control inside that model, ex: `is_published`, `is_active`, etc. `is_published_value` is the value t
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzI2OTMwOTddfQ==
+eyJoaXN0b3J5IjpbLTExNzQzMTIyMDBdfQ==
 -->
