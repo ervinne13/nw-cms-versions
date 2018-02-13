@@ -66,7 +66,7 @@ To enable version control on the models, the user must `migrate` after configura
 $ php artisan make:cmsvmigration
 ````
 
-This will create a migration called `create_cms_version_pivot_tables` that will contain database changes based on the c
+This will create a migration called `create_cms_version_pivot_tables` that will contain database changes based on the configuration in `
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg4MTAyODAzXX0=
+eyJoaXN0b3J5IjpbLTQ5NTM4NDgxXX0=
 -->
