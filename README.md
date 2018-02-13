@@ -41,6 +41,23 @@ $ php artisan vendor:publish --provider="Ervinne\CMSVersion\Providers\CMSVersion
 
 Set which models you want to `version control` in the `config/cms-versions.php` 
 
+````
+    'models' => [
+        [
+            'table'                => 'my_table',
+            'primary_key'          => 'id',
+            'classpath'            => \App\User::class,
+            'is_published_field'   => 'my_is_published_field',
+            'is_published_value'   => true,
+            'is_unpublished_value' => false,
+            'is_multiple'          => true,
+            'is_migrated'          => false,
+            'has_local_field'      => true,
+        ],
+    ],
+````
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzg3ODI3MjJdfQ==
+eyJoaXN0b3J5IjpbMTQ0MjkzNjY1MV19
 -->
