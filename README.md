@@ -52,7 +52,7 @@ Set which models you want to `version control` in the `config/cms-versions.php`
             'is_unpublished_value' => false,
         ],
     ],
-````
+```
 
 Where `table`, `primary_key`, `classpath` is the table, primary key, and class path of the model you want to version control. `is_published_field` is the name of the field you want to version control inside that model, ex: `is_published`, `is_active`, etc. `is_published_value` is the value that needs to be set to consider the field as "published", `is_unpublished_value` is vice versa.
 
@@ -113,5 +113,5 @@ Save your model by specifying the id of the saved `CMSVersion` object in the mod
 
 Version `status` can be any string you want but `"Published"` is reserved and is set to signify that the version is the currently used version. If you try to save version controlled fields to a model set to a version that's not `published` then those changes wont save on the model itself but will be put in the version records only. If a version with model data is set to `published` it's data will be updated to the respective models.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMzg4ODY5MV19
+eyJoaXN0b3J5IjpbMTcxNDY4MzU0M119
 -->
