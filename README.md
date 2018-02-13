@@ -82,11 +82,10 @@ use Ervinne\CMSVersion\VersionControlled;
 
 class BannerSet extends Model
 {
-
     use VersionControlled;
 ...
 ````
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1NzQ1MjgxOV19
+eyJoaXN0b3J5IjpbLTE0ODE5OTgwNTNdfQ==
 -->
