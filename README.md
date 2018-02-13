@@ -86,9 +86,9 @@ class BannerSet extends Model
 ...
 ````
 
-## Saving to a Version
+## Saving Model to a Version
 
-
+Before you save a model, you need to save a version to save it t
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4OTQ2NDYyOV19
+eyJoaXN0b3J5IjpbLTk3NDM2MzQ4Ml19
 -->
