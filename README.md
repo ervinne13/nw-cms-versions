@@ -74,7 +74,19 @@ $ php artisan migrate
 
 ## Model Setup
 
+Use the trait `VersionControlled` in your model to enable versioning functionalities:
+
+````
+...
+use Ervinne\CMSVersion\VersionControlled;
+
+class BannerSet extends Model
+{
+
+    use VersionControlled;
+...
+````
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODcxNDYxMjk4XX0=
+eyJoaXN0b3J5IjpbLTY1NzQ1MjgxOV19
 -->
