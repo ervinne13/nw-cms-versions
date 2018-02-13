@@ -94,9 +94,9 @@ Before you save a model, you need to save a version to save it to first:
 CMSVersion::insert([
     'display_name' => 'Default',
     'description' => 'Default Version',
-    'status' => 'Publis
+    'status' => 'Published'
 ]);
 ````
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4MzI0MTc5NF19
+eyJoaXN0b3J5IjpbOTcxNzQ4MTU4XX0=
 -->
