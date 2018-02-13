@@ -97,6 +97,8 @@ CMSVersion::insert([
     'status' => 'Published'
 ]);
 ````
+
+Version `status` can be any string you want but `"Published"` is reserved and is set to signify that the version is the currently 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTcxNzQ4MTU4XX0=
+eyJoaXN0b3J5IjpbLTExMDIyMDI1MThdfQ==
 -->
