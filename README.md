@@ -102,7 +102,7 @@ Save your model by specifying the id of the saved `CMSVersion` object in the mod
 
 ````
     $bannerSet               = new BannerSet();
-    $bannerSet->version_id   = $request->version_id;
+    $bannerSet->version_id   = $request->version_id; // assumes the version comes from the request
     $bannerSet->label        = $request->label;
     $bannerSet->images_json  = $request->banners;
     $bannerSet->is_published = $request->is_published;
@@ -113,5 +113,5 @@ Save your model by specifying the id of the saved `CMSVersion` object in the mod
 
 Version `status` can be any string you want but `"Published"` is reserved and is set to signify that the version is the currently used version. If you try to save version controlled fields to a model set to a version that's not `published` then those changes wont save on the model itself but will be put in the version records only. If a version with model data is set to `published` it's data will be updated to the respective models.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2NTAwODg4XX0=
+eyJoaXN0b3J5IjpbLTk1OTg3NDk0MV19
 -->
