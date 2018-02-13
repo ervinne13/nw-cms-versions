@@ -39,8 +39,8 @@ You can set which models to `"Version Control"` on the `config/cms-versions.php`
 $ php artisan vendor:publish --provider="Ervinne\CMSVersion\Providers\CMSVersionServiceProvider"
 ````
 
-Set which models you want to `version control` in the `config/cms-versions.php`
+Set which models you want to `version control` in the `config/cms-versions.php` 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDI3NzYxNF19
+eyJoaXN0b3J5IjpbLTExNzg3ODI3MjJdfQ==
 -->
