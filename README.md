@@ -20,7 +20,7 @@ Then add the service provider in your `config/app.php` providers array:
 
 To allow the command for generating migrations out of models to be version controlled, add the `GenerateCMSVersionMigrations` class to the `App\Console\Kernel` `$commands` property:
 
-````
+```php
     /**
      * The Artisan commands provided by your application.
      *
@@ -29,7 +29,7 @@ To allow the command for generating migrations out of models to be version contr
     protected $commands = [
         Ervinne\CMSVersion\Commands\GenerateCMSVersionMigrations::class
     ];
-````
+```
 
 ## Configurations
 
@@ -113,5 +113,5 @@ Save your model by specifying the id of the saved `CMSVersion` object in the mod
 
 Version `status` can be any string you want but `"Published"` is reserved and is set to signify that the version is the currently used version. If you try to save version controlled fields to a model set to a version that's not `published` then those changes wont save on the model itself but will be put in the version records only. If a version with model data is set to `published` it's data will be updated to the respective models.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMDUzMjY5XX0=
+eyJoaXN0b3J5IjpbMTMyMDA2MTc0OV19
 -->
