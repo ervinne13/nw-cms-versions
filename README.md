@@ -88,7 +88,9 @@ class BannerSet extends Model
 
 ## Saving Model to a Version
 
-Before you save a model, you need to save a version to save it to first
+Before you save a model, you need to save a version to save it to first:
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQxMzU1NTM1XX0=
+eyJoaXN0b3J5IjpbLTU4NzU0NDI1XX0=
 -->
