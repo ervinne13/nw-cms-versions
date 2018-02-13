@@ -21,7 +21,7 @@ Ervinne\CMSVersion\Providers\CMSVersionServiceProvider::class,
 To allow the command for generating migrations out of models to be version controlled, add the `GenerateCMSVersionMigrations` class to the `App\Console\Kernel` `$commands` property:
 
 ````
-	/**
+/**
      * The Artisan commands provided by your application.
      *
      * @var array
@@ -41,5 +41,5 @@ $ php artisan vendor:publish --provider="Ervinne\CMSVersion\Providers\CMSVersion
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyOTgzMTYwXX0=
+eyJoaXN0b3J5IjpbLTEyMzM1OTExNTJdfQ==
 -->
