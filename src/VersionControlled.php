@@ -20,27 +20,29 @@ trait VersionControlled {
         $modelConfig = $config->getModelConfigs($this->table);
         $pivotTable = $config->getPivotTable($this->table);
 
-        foreach ($modelConfig['fields'] as $field) {
-            if ($field['is_published_field'] == $isPublishedField) {
-                $fieldConfig = $field;
-                break;
-            }
-        }
-
-        if (!$fieldConfig) {
-            throw new Exception("{$isPublishedField} does not exist in {$pivotTable}");
-        }
-
+        $fieldConfig = $this->getFieldConfig($modelConfig, $pivotTable, $isPublishedField);
+        
         $query
                 ->select("{$this->table}.*")
+                ->where("{$pivotTable}.$isPublishedField", $fieldConfig['is_published_value'])
                 ->join($pivotTable, "{$this->table}.{$modelConfig['primary_key']}", '=', 'model_id')
                 ->join('cms_versions', "{$pivotTable}.version_id", '=', 'cms_versions.id');
 
         if (Request::has('version_id') && $config->getVersionDetector() == 'request_auto') {
             return $query->where('cms_versions.id', Request::get('version_id'));
         } else {
-            return $query>where('cms_versions.status', 'Published');
+            return $query->where('cms_versions.status', 'Published');
         }
+    }
+
+    protected function getFieldConfig($modelConfig, $pivotTable, $isPublishedField) {
+        foreach ($modelConfig['fields'] as $field) {
+            if ($field['is_published_field'] == $isPublishedField) {
+                return $field;
+            }
+        }
+
+        throw new Exception("{$isPublishedField} does not exist in {$pivotTable}");
     }
 
     /**
