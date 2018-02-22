@@ -37,6 +37,9 @@ class CMSVersionServiceProvider extends ServiceProvider
         ]);
 
         $this->loadMigrationsFrom(__DIR__ . '/../publish/migrations/create_cms_versions_table.php');
+        
+        //  routes
+        require __DIR__ . '/../routes/nw-cms-version.php';
     }
 
     /**

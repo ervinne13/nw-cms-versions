@@ -44,7 +44,7 @@ let CMSVersion = (function () {
     }
 
     function loadVersionData(versionId) {
-        let url = `${baseUrl}/model/${model}/version/${versionId}/data/${modelId}`;
+        let url = `${baseUrl}/ervinne/nw-cms-version/model/${model}/version/${versionId}/data/${modelId}`;
         return $.get(url);
     }
 
