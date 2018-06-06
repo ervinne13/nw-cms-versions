@@ -2,30 +2,27 @@
 
 namespace Ervinne\CMSVersion\Repositories\Impl;
 
-use Exception;
-use Illuminate\Support\Facades\DB;
 use Ervinne\CMSVersion\Models\CMSVersion;
 use Ervinne\CMSVersion\Repositories\CMSVersionRepository;
 use Ervinne\CMSVersion\Services\CMSVersionConfig;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * Description of CMSVersionRepositoryDefaultImpl
  *
  * @author Ervinne Sodusta <ervinne.sodusta@nuworks.ph>
  */
-class CMSVersionRepositoryDefaultImpl implements CMSVersionRepository
-{
+class CMSVersionRepositoryDefaultImpl implements CMSVersionRepository {
 
     /** @var CMSVersionConfig */
     protected $config;
 
-    public function __construct(CMSVersionConfig $config)
-    {
+    public function __construct(CMSVersionConfig $config) {
         $this->config = $config;
     }
 
-    public function save(CMSVersion $version)
-    {
+    public function save(CMSVersion $version) {
         return DB::transaction(function() use ($version) {
                     //  There should be only 1 version published
                     if ($version->status === 'Published') {
@@ -40,8 +37,7 @@ class CMSVersionRepositoryDefaultImpl implements CMSVersionRepository
                 });
     }
 
-    public function updateVersionControlledModels($versionId)
-    {
+    public function updateVersionControlledModels($versionId) {
         $models = $this->config->getModelListConfigs();
 
         foreach ($models as $modelConfig) {
@@ -50,9 +46,8 @@ class CMSVersionRepositoryDefaultImpl implements CMSVersionRepository
         }
     }
 
-    public function updateModelToVersion($modelConfig, $versionId)
-    {
-        $pivotTable    = $this->config->getPivotTable($modelConfig['table']);
+    public function updateModelToVersion($modelConfig, $versionId) {
+        $pivotTable = $this->config->getPivotTable($modelConfig['table']);
         $versionModels = DB::table($pivotTable)->whereVersionId($versionId)->get();
 
         foreach ($versionModels as $versionModel) {
@@ -69,8 +64,7 @@ class CMSVersionRepositoryDefaultImpl implements CMSVersionRepository
         }
     }
 
-    public function resetModelsData($modelConfig)
-    {
+    public function resetModelsData($modelConfig) {
 
         $resetUpdates = [];
 
@@ -83,10 +77,18 @@ class CMSVersionRepositoryDefaultImpl implements CMSVersionRepository
                 ->update($resetUpdates);
     }
 
-    public function delete($id)
-    {
-        //  TODO: delete the version and its data
-        throw new Exception('Not yet implemented');
+    public function delete($id) {
+        $version = CMSVersion::find($id);
+
+        if (!$version) {
+            throw new HttpException(404, 'Version not found');
+        }
+
+        if ($version->status == 'Published') {
+            throw new HttpException(422, 'You may not delete a published version');
+        } else {
+            $version->delete();
+        }
     }
 
 }
